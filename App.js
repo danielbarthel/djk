@@ -1,31 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
 import {StyleSheet, Text, View, Image, Button, Pressable, Alert} from 'react-native';
+import {NavigationContainer} from "@react-navigation/native";
 
 const d1image = require('./assets/Heimspiel.png')
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.header}>DJK Nieder-Olm</Text>
-      </View>
-      <View>
-        <Image source={d1image} style={styles.image}></Image>
-      </View>
-      <View style={styles.footer}>
-          <Pressable style={styles.button} onPress={() => Alert.alert('BUBUUUUU')}>
-              <Text style={styles.buttonText}>Stats</Text>
-          </Pressable>
-          <Pressable style={styles.button}>
-              <Text style={styles.buttonText}>Home</Text>
-          </Pressable>
-          <Pressable style={styles.button}>
-              <Text style={styles.buttonText}>Settings</Text>
-          </Pressable>
-      </View>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+    return (
+        <NavigationContainer>
+            {<View style={styles.container}>
+                <View>
+                    <Text style={styles.header}>DJK Nieder-Olm</Text>
+                </View>
+                <View>
+                    <Image source={d1image} style={styles.image}></Image>
+                </View>
+                <View style={styles.footer}>
+                    <Pressable style={styles.button}>
+                        <Text style={styles.buttonText}>Stats</Text>
+                    </Pressable>
+                    <Pressable style={styles.button}>
+                        <Text style={styles.buttonText}>Home</Text>
+                    </Pressable>
+                    <Pressable style={styles.button}>
+                        <Text style={styles.buttonText}>Settings</Text>
+                    </Pressable>
+                </View>
+                <StatusBar style="auto" />
+            </View>}
+        </NavigationContainer>
+    );
+};
+export default App;
 
 const styles = StyleSheet.create({
   container: {
