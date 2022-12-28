@@ -17,10 +17,10 @@ export default function HomeScreen({navigation}) {
             </View>
             <View style={{height: 600, alignItems:"center"}}>
                 <ScrollView>
-                    <Image source={require('../assets/Heimspiel.png')} style={styles.image}></Image>
-                    <Image source={require('../assets/1.png')} style={styles.image}></Image>
-                    <Image source={require('../assets/2.png')} style={styles.image}></Image>
-                    <Image source={require('../assets/3.png')} style={styles.image}></Image>
+                    <Image source={require('./assets/Heimspiel.png')} style={styles.image}></Image>
+                    <Image source={require('./assets/1.png')} style={styles.image}></Image>
+                    <Image source={require('./assets/2.png')} style={styles.image}></Image>
+                    <Image source={require('./assets/3.png')} style={styles.image}></Image>
                 </ScrollView>
             </View>
             <View style={styles.footer}>
@@ -42,7 +42,7 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#9ff8b5',
+        backgroundColor: '#707070',
     },
     djkHeader: {
         width: 300,
