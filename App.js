@@ -2,9 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import {StyleSheet, Text, View, Image, Button, Pressable, Alert, ScrollView, FlatList} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import ProfilScreen from './Profil';
-import StatsScreen from "./Statsscreen";
-import HomeScreen from "./Homescreen";
+import ProfilScreen from './Screens/Profil';
+import StatsScreen from "./Screens/Statsscreen";
+import HomeScreen from "./Screens/Homescreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
