@@ -6,69 +6,90 @@ import {useEffect, useState} from "react";
 import Anmeldescreen from "./Anmeldescreen";
 const Stack = createNativeStackNavigator();
 export default function ProfilScreen() {
-    const [user, setUser] = useState(null);
+    const [vorname, setVorname] = useState('');
 
-    const fetchData = async () => {
-        try {
-            const res = await fetch('http://134.93.96.120:3000/api/data?user_nummer=6');
-            const data = await res.json();
-            setUser(data.user);
-        } catch (err) {
-            console.error(err.message);
-        }
-    };
     useEffect(() => {
-        fetchData();
-    }, []); // der leere Array-Parameter sorgt dafür, dass die Funktion nur einmal beim Rendern der Komponente aufgerufen wird
-        const angemeldet = true;
+        fetch('http://134.93.96.120:3000/users')
+            .then(response => response.json())
+            .then(json => {
+                setVorname(json.vorname);
+            })
+            .catch(error => console.error(error))
+    }, []);
+    const angemeldet = true;
         if (angemeldet == false) {
             return (
-                <Anmeldescreen />
+                <Anmeldescreen/>
             )
-        } else {
+        }
+        else {
             return (
-                <View>
-                    <Text>Hallo</Text>
-                    {user && <Text>Benutzer: {user.vorname}</Text>}
-                    <Text>!</Text>
+                <View style={styles.container}>
+                    <Text style={styles.header}>Hallo, {vorname}</Text>
+                    <Pressable style={styles.pressable}>
+                        <Text style={styles.pressableText}>Deine Chats</Text>
+                    </Pressable>
+                    <Pressable style={styles.pressable}>
+                        <Text style={styles.pressableText}>Deine Termine</Text>
+                    </Pressable>
+                    <Pressable style={styles.pressable}>
+                        <Text style={styles.pressableText}>Deine Einstellungen</Text>
+                    </Pressable>
+                    <Pressable style={styles.pressable}>
+                        <Text style={styles.pressableText}>Deine Statistiken</Text>
+                    </Pressable>
+                    <View style={styles.footer}>
+                        <Pressable style={styles.button} onPress={() => navigation.navigate('Stats')}>
+                            <Text style={styles.buttonText}>Stats</Text>
+                        </Pressable>
+                        <Pressable style={styles.button}>
+                            <Text style={styles.buttonText}>Home</Text>
+                        </Pressable>
+                        <Pressable style={styles.button} onPress={() => navigation.navigate('Profil')}>
+                            <Text style={styles.buttonText} >Profil</Text>
+                        </Pressable>
+                    </View>
                 </View>
+
             )
         }
 }
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: "center",
-        flex: 1,
-        backgroundColor: 'rgba(9,175,83,0.49)',
-    },
-
-    input: {
-        color: '#000',
-        width: 300,
-        height:50,
-        borderWidth: 1,
-        marginTop: 30,
-        borderRadius: 10,
-        paddingLeft: 10,
+        backgroundColor: 'rgba(191,255,194,0.49)',
     },
 
     header: {
         textAlign: "center",
-        color: '#fff',
+        color: '#000',
         fontSize: 50,
         marginTop: 50,
     },
 
-    dropdownwindow: {
-        paddingLeft: 10,
-        backgroundColor: '#707070',
+    pressable: {
+        backgroundColor: 'rgba(115,155,118,0.49)',
+        margin: 20,
+        height: 50,
+        borderRadius: 25,
+        justifyContent: "center",
     },
 
-    dropdown: {
-        marginTop: 30,
-
-        width: 150,
-        flexDirection: "row",
-    }
+    pressableText: {
+        textAlign: "center",
+    },
+    footer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end'
+    },
+    button: {
+        flex: 1,
+        alignSelf: 'stretch',
+    },
+    buttonText: {
+        color: '#000',
+        textAlign: "center",
+    },
 })

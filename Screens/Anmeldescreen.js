@@ -28,7 +28,7 @@ export default function Anmeldescreen() {
     const [geburtsdatum, setGeburtsdatum] = useState('');
     const sendData = () => {
         // Senden Sie die Daten an den Express-Server
-        fetch('http://134.93.96.120:3000/api/user', {
+        fetch('http://134.93.96.120:3000/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ export default function Anmeldescreen() {
         <View>
             <Text style={styles.header}>Registrieren</Text>
         </View>
-        <View>
+        <View style={styles.inputs}>
             <TextInput
                 style={styles.input}
                 value={vorname}
@@ -59,13 +59,25 @@ export default function Anmeldescreen() {
                 style={styles.input}
                 value={nachname}
                 onChangeText={text => setNachname(text)}
-                placeholder="Lastname"
+                placeholder="Nachname"
             />
             <TextInput
                 style={styles.input}
                 value={geburtsdatum}
                 onChangeText={text => setGeburtsdatum(text)}
                 placeholder="Geburtsdatum"
+            />
+            <TextInput
+                style={styles.input}
+                value={geburtsdatum}
+                onChangeText={text => setGeburtsdatum(text)}
+                placeholder="Größe"
+            />
+            <TextInput
+                style={styles.input}
+                value={geburtsdatum}
+                onChangeText={text => setGeburtsdatum(text)}
+                placeholder="Gewicht"
             />
             <View style={{flexDirection: 'row'}}>
                 <Dropdown
@@ -113,7 +125,9 @@ export default function Anmeldescreen() {
             </View>
             <TextInput style={styles.input} placeholder="Email Adresse"></TextInput>
             <TextInput style={styles.input} placeholder="Passwort"></TextInput>
-            <Button title="Senden" onPress={sendData} />
+            <Pressable style={styles.button}>
+                <Text style={styles.buttonText}>Senden</Text>
+            </Pressable>
             <View style={styles.footer}>
                 <Pressable style={styles.button} onPress={() => navigation.navigate('Stats')}>
                     <Text style={styles.buttonText}>Stats</Text>
@@ -132,41 +146,45 @@ export default function Anmeldescreen() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'rgba(9,175,83,0.49)',
+        flex: 1,
+        backgroundColor: 'rgba(191,255,194,0.49)',
     },
-
+    inputs: {
+        alignItems: 'center',
+    },
     input: {
-        color: '#000',
+        color: 'rgba(115,155,118,0.49)',
         width: 300,
         height:50,
         borderWidth: 0.5,
-        marginTop: 30,
+        marginTop: 20,
         borderRadius: 10,
         paddingLeft: 10,
     },
 
     header: {
         textAlign: "center",
-        color: '#fff',
+        color: '#000',
         fontSize: 50,
         marginTop: 50,
     },
 
     footer: {
-        flexDirection:'row',
-        marginTop: 200,
+        flexDirection: 'row',
+        position: 'absolute',
+        bottom: -50,
+        justifyContent: 'space-between',
     },
     button: {
-        margin: 5,
+        marginTop: 20,
         justifyContent: 'center',
         width: '30%',
-        backgroundColor: '#000',
+        backgroundColor: 'rgba(115,155,118,0.49)',
         height: 50,
         borderRadius: 25,
-        marginBottom: 10
     },
     buttonText: {
-        color: '#fff',
+        color: '#000',
         textAlign: "center",
         justifyContent: 'center'
     },

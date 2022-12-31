@@ -17,10 +17,11 @@ export default function HomeScreen({navigation}) {
             </View>
             <View style={{height: 600, alignItems:"center"}}>
                 <ScrollView>
-                    <Image source={require('./assets/Heimspiel.png')} style={styles.image}></Image>
-                    <Image source={require('./assets/1.png')} style={styles.image}></Image>
-                    <Image source={require('./assets/2.png')} style={styles.image}></Image>
-                    <Image source={require('./assets/3.png')} style={styles.image}></Image>
+                    <Image style={styles.image} source={require('../assets/1.png')}/>
+                    <Image style={styles.image} source={require('../assets/2.png')}/>
+                    <Image style={styles.image} source={require('../assets/3.png')}/>
+                    <Image style={styles.image} source={require('../assets/4.png')}/>
+                    <Image style={styles.image} source={require('../assets/Heimspiel.png')}/>
                 </ScrollView>
             </View>
             <View style={styles.footer}>
@@ -34,7 +35,6 @@ export default function HomeScreen({navigation}) {
                     <Text style={styles.buttonText} onPress={() => navigation.navigate('Profil')}>Profil</Text>
                 </Pressable>
             </View>
-            <StatusBar style="auto" />
         </View>
     );
 };
@@ -42,19 +42,19 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#707070',
+        backgroundColor: 'rgba(191,255,194,0.49)',
     },
     djkHeader: {
         width: 300,
         textAlign: "left",
-        color: '#fff',
+        color: '#000',
         fontSize: 40,
         marginTop: 50,
         marginLeft: 20,
     },
     header: {
         textAlign: "center",
-        color: '#fff',
+        color: '#000',
         fontSize: 50,
     },
     image: {
@@ -63,20 +63,21 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     footer: {
-        flexDirection:'row',
-
+        flexDirection: 'row',
+        position: 'absolute',
+        bottom: 0,
     },
     button: {
         margin: 5,
         justifyContent: 'center',
         width: '30%',
-        backgroundColor: '#000',
+        backgroundColor: 'rgba(115,155,118,0.49)',
         height: 50,
         borderRadius: 25,
         marginBottom: 10
     },
     buttonText: {
-        color: '#fff',
+        color: '#000',
         textAlign: "center",
         justifyContent: 'center'
     },
