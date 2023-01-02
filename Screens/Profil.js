@@ -1,13 +1,17 @@
 import {StyleSheet, Text, View, Image, Button, Pressable, Alert, ScrollView, FlatList, TextInput} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import DropDownPicker from 'react-native-dropdown-picker';
 import {useEffect, useState} from "react";
 import Anmeldescreen from "./Anmeldescreen";
+import HomeScreen from "./Homescreen";
+import StatsScreen from "./Statsscreen";
+import TerminScreen from "./TerminScreen";
+import Chat from "./Chat";
+import Einstellungen from "./Einstellungen";
 const Stack = createNativeStackNavigator();
-export default function ProfilScreen() {
-    const [vorname, setVorname] = useState('');
 
+export default function ProfilScreen({navigation}) {
+    const [vorname, setVorname] = useState('');
     useEffect(() => {
         fetch('http://134.93.96.120:3000/users')
             .then(response => response.json())
@@ -29,7 +33,7 @@ export default function ProfilScreen() {
                     <Pressable style={styles.pressable}>
                         <Text style={styles.pressableText}>Deine Chats</Text>
                     </Pressable>
-                    <Pressable style={styles.pressable}>
+                    <Pressable style={styles.pressable} onPress={() => navigation.navigate('Termine')}>
                         <Text style={styles.pressableText}>Deine Termine</Text>
                     </Pressable>
                     <Pressable style={styles.pressable}>
@@ -57,6 +61,7 @@ export default function ProfilScreen() {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: 'rgba(191,255,194,0.49)',
     },
 
@@ -79,17 +84,21 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     footer: {
-        flex: 1,
+        marginTop: 300,
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end'
+        justifyContent: 'space-between',
     },
     button: {
-        flex: 1,
-        alignSelf: 'stretch',
+        marginTop: 20,
+        justifyContent: 'center',
+        width: '30%',
+        backgroundColor: 'rgba(115,155,118,0.49)',
+        height: 50,
+        borderRadius: 25,
     },
     buttonText: {
         color: '#000',
         textAlign: "center",
+        justifyContent: 'center'
     },
 })

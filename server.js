@@ -10,7 +10,7 @@ const db = new sqlite3.Database('./djk_database/djk_database.sqlite', (err) => {
     }
     console.log('Verbunden mit der Datenbank');
 });
-app.get('/users', (req, res) => {
+app.get('/users', function (req, res) {
     db.get('SELECT vorname FROM benutzer WHERE user_nummer = 6', (err, row) => {
         if (err) {
             console.error(err.message);
@@ -25,6 +25,20 @@ app.get('/users', (req, res) => {
     });
 });
 
+app.get('/termine', function (req, res) {
+    db.get('SELECT * FROM termine', (err, row) => {
+        if (err) {
+            console.error(err.message);
+            res.sendStatus(500); // Internal Server Error
+        } else if (row) {
+            res.json(row);
+            console.log(row);
+        } else {
+            res.sendStatus(404); // Not Found
+            console.log('Keine Daten gefunden');
+        }
+    });
+});
 // API-Route zum Einfügen von Daten in die Datenbank
 app.post('/api/data', (req, res) => {
     // Lesen Sie die Daten aus dem Anforderungskörper aus

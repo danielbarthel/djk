@@ -125,7 +125,7 @@ export default function Anmeldescreen() {
             </View>
             <TextInput style={styles.input} placeholder="Email Adresse"></TextInput>
             <TextInput style={styles.input} placeholder="Passwort"></TextInput>
-            <Pressable style={styles.button}>
+            <Pressable style={styles.sendButton}>
                 <Text style={styles.buttonText}>Senden</Text>
             </Pressable>
             <View style={styles.footer}>
@@ -168,7 +168,15 @@ const styles = StyleSheet.create({
         fontSize: 50,
         marginTop: 50,
     },
-
+    sendButton: {
+        marginTop: 20,
+        marginBottom: 40,
+        justifyContent: 'center',
+        width: '90%',
+        backgroundColor: 'rgba(115,155,118,0.49)',
+        height: 50,
+        borderRadius: 25,
+    },
     footer: {
         flexDirection: 'row',
         position: 'absolute',
