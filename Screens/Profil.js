@@ -46,7 +46,7 @@ export default function ProfilScreen({navigation}) {
                         <Pressable style={styles.button} onPress={() => navigation.navigate('Stats')}>
                             <Text style={styles.buttonText}>Stats</Text>
                         </Pressable>
-                        <Pressable style={styles.button}>
+                        <Pressable style={styles.button} onPress={() => navigation.navigate('Home')}>
                             <Text style={styles.buttonText}>Home</Text>
                         </Pressable>
                         <Pressable style={styles.button} onPress={() => navigation.navigate('Profil')}>

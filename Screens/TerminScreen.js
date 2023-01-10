@@ -1,6 +1,5 @@
 import {View, Text, StyleSheet, Linking} from "react-native";
 import {useEffect, useState} from "react";
-import {json} from "express";
 
 function openMap() {
     Linking.openURL("https://www.google.de/maps/place/Heinz-Kerz-Sporthalle/@49.9000306,8.1936129,17z/data=!3m1!4b1!4m5!3m4!1s0x47bd91fb47de5dcf:0x23dcd809e8bca627!8m2!3d49.9000272!4d8.1958016?hl=de");

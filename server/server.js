@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
 const port = 3000;
+const database = './djk_database/djk_database.sqlite'
 app.use(express.json());
-const db = new sqlite3.Database('./djk_database/djk_database.sqlite', (err) => {
+const db = new sqlite3.Database( database, (err) => {
     if (err) {
         console.error(err.message);
     }
@@ -27,6 +28,22 @@ app.get('/users', function (req, res) {
 
 app.get('/termine', function (req, res) {
     db.get('SELECT * FROM termine', (err, row) => {
+        if (err) {
+            console.error(err.message);
+            res.sendStatus(500); // Internal Server Error
+        } else if (row) {
+            res.json(row);
+            console.log(row);
+        } else {
+            res.sendStatus(404); // Not Found
+            console.log('Keine Daten gefunden');
+        }
+    });
+});
+
+//Sende Bilder als Datei an meine App
+app.get('/images', function (req, res) {
+    db.get('SELECT news_bild FROM news', (err, row) => {
         if (err) {
             console.error(err.message);
             res.sendStatus(500); // Internal Server Error

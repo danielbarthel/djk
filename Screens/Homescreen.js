@@ -1,8 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
 import {StyleSheet, Text, View, Image, Button, Pressable, Alert, ScrollView, FlatList, TextInput} from 'react-native';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import DropDownPicker from 'react-native-dropdown-picker';
-import {useState} from "react";
+
 const Stack = createNativeStackNavigator();
 
 export default function HomeScreen({navigation}) {
@@ -17,10 +15,10 @@ export default function HomeScreen({navigation}) {
             </View>
             <View style={{height: 600, alignItems:"center"}}>
                 <ScrollView>
-                    <Image style={styles.image} source={require('../assets/1.png')}/>
-                    <Image style={styles.image} source={require('../assets/2.png')}/>
-                    <Image style={styles.image} source={require('../assets/3.png')}/>
-                    <Image style={styles.image} source={require('../assets/4.png')}/>
+                    <Image style={styles.image} source={require('../server/1.png')}/>
+                    <Image style={styles.image} source={require('../server/2.png')}/>
+                    <Image style={styles.image} source={require('../server/3.png')}/>
+                    <Image style={styles.image} source={require('../server/4.png')}/>
                     <Image style={styles.image} source={require('../assets/Heimspiel.png')}/>
                 </ScrollView>
             </View>
